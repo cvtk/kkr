@@ -50,11 +50,11 @@
 		}
 
 	body {box-sizing: border-box;}
-		.bg { position: absolute; z-index: -10; top: 0; left: 0; width: 100%; height: 100%; }
+		.bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 			.bg__vid { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto;z-index: -9; transform: translate(-50%, -50%); }
 			.bg__overlay:before { content: ''; position: absolute; z-index: -8; width: 100%; height: 100%; opacity: .5; background: rgb(0, 0, 0); }
 			.bg__overlay { position: absolute; z-index: -7; width: inherit; height: inherit; opacity: .5; background-repeat: repeat; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAFUlEQVQIW2NgYGD4zwAB6DRuQGsdABWrCPikxX4HAAAAAElFTkSuQmCC'); }
-			.bg__constellation {display: block; position: absolute; z-index: -5;}
+			.bg__constellation {display: block; position: absolute; z-index: 0;}
 		.button { position: fixed; z-index: -5; left: 1em; bottom: 1em; width: 1em; height: 1em; cursor: pointer }
 		.main {}
 			.main__logo {position:absolute; z-index: -6; top:0; left:0;}
@@ -752,7 +752,7 @@ if (!window.requestAnimationFrame) {
 				width: window.innerWidth,
 				height: window.innerHeight,
 				velocity: 0.1,
-				length: 100,
+				length: 250,
 				distance: 120,
 				radius: 150,
 				stars: []
