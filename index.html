@@ -664,8 +664,9 @@ vertex3d.prototype = {
 		};
 	};
 	var textSet = [
-		{text:"KOKORKIN", sphereRadius:60, sphereSpace:50, unitTime:250, time:9000},
-		{text:"WEB_STUDIO", sphereRadius:80, sphereSpace:60, unitTime:250, time:9000}
+		{text:"KOKORKIN", sphereRadius:600, sphereSpace:500, unitTime:900, time:9000},
+		{text:"KOKORKIN", sphereRadius:60, sphereSpace:50, unitTime:0, time:9000},
+		{text:"WEB_STUDIO", sphereRadius:80, sphereSpace:60, unitTime:0, time:9000}
 	];
 	
 	var textSetChangerIncrement = 0;
@@ -680,8 +681,8 @@ vertex3d.prototype = {
 			textSetChangerIncrement++;
 			if(textSetChangerIncrement == textSet.length) {
 				textSetChangerIncrement = 0;
-				textSet.splice(1,2);
-				textSet[0].text = "PLAN_B_DESIGN";
+				textSet = [];
+				textSet = [{text:"PLAN_B_DESIGN", sphereRadius:60, sphereSpace:50, unitTime:0, time:9000}];
 				document.getElementById('mouseIcon').style.opacity = 1;
 			};
 			textSetChanger();
@@ -729,10 +730,6 @@ if (!window.requestAnimationFrame) {
 }
 
 (function ($, window) {
-	/**
-	 * Makes a nice constellation on canvas
-	 * @constructor Constellation
-	 */
 	function Constellation (canvas, options) {
 		var $canvas = $(canvas),
 			context = canvas.getContext('2d'),
