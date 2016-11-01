@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Kokorkin studio</title>
-	<script type="text/javascript" src="zepto.js"></script>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.fullpage.min.js"></script>
 	<script type="text/javascript">
 		window.onload = function() {
 			loader = document.getElementById("pageLoader");
@@ -15,6 +16,7 @@
 	</script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=cyrillic" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="normalize.css">
+	<link rel="stylesheet" type="text/css" href="jquery.fullpage.min.css">
 	<style type="text/css">
 
 		.page-loader {
@@ -49,7 +51,7 @@
 		  100% { transform: rotate(360deg); }
 		}
 
-	body {box-sizing: border-box;}
+	body {box-sizing: border-box; overflow: hidden;}
 		.bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 			.bg__vid { position: fixed; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto;z-index: -9; transform: translate(-50%, -50%); }
 			.bg__overlay:before { content: ''; position: absolute; z-index: -8; width: 100%; height: 100%; opacity: .5; background: rgb(0, 0, 0); }
@@ -57,8 +59,8 @@
 			.bg__constellation {display: block; position: absolute; z-index: 0;}
 		.button { position: fixed; z-index: -5; left: 1em; bottom: 1em; width: 1em; height: 1em; cursor: pointer }
 		.main {}
-			.main__logo {position:absolute; z-index: -6; top:0; left:0;}
-			.main__mouse-icon {opacity: 0; width: 100%; position: fixed; top: 70%; transition: opacity 10s ease; }
+			.main__logo {position:relative; z-index: -6; top:0; left:0;}
+			.main__mouse-icon {opacity: 0; width: 100%; position: absolute; top: 70%; transition: opacity 10s ease; }
 				.mouse-icon {
 				margin: 0 auto;
 				  border: 2px solid #FFF;
@@ -139,15 +141,22 @@
 		<div class="bg__buffer" id="bgBuffer" style="display:none;"></div>
 		<canvas class="bg__constellation" id="bgConstellation"></canvas>
 	</div>
-	<div class="main">
-		<span class="button button_mute" id="ButtonMute"></span>
-		<canvas class="main__logo" id="mainLogo"></canvas>
-		<div class="main__mouse-icon" id="mouseIcon">
-			<div class="mouse-icon"><div class="wheel"></div></div>
+	<div id="fullpage">
+		<div class="section main">
+			<span class="button button_mute" id="ButtonMute"></span>
+			<canvas class="main__logo" id="mainLogo"></canvas>
+			<div class="main__mouse-icon" id="mouseIcon">
+				<div class="mouse-icon"><div class="wheel"></div></div>
+			</div>
+		</div>
+		<div class="section price">
+			<h3 class="slide__subheader">Вас ведь интересует цена?</h3>
+			<h2 class="slide__header">Сколько стоит</h2>
 		</div>
 	</div>
 </body>
 <script>
+
 var pauseBtn;
 intitializePlayer()
 
@@ -908,6 +917,16 @@ $('#bgConstellation').constellation({
 	},
 	radius: 250
 });
+
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		anchors: ['main', 'price', 'contacts'],
+		navigation: true,
+		navigationPosition: 'right',
+		navigationTooltips: ['Главная', 'Сколько стоит', 'Что мы умеем', 'Как связаться']
+	});
+});
+
 
 </script>
 </html>
